@@ -112,7 +112,7 @@ const DashboardSidebar = () => {
               <Avatar className="w-10 h-10 drop-shadow">
                 <AvatarImage src={session.data?.user?.image as string} />
                 <AvatarFallback>
-                  {getAvatarName(session.data?.user.name as string)}
+                {getAvatarName(session?.data?.user?.name as string)}
                 </AvatarFallback>
               </Avatar>
             </div>
