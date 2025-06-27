@@ -8,8 +8,8 @@ datasource db {
 }
 
 model User {
-  id         String @unique
-  @id @default(auto()) @map("_id") @db.ObjectId
+ id String @id @default(auto()) @map("_id") @db.ObjectId
+
   // Add your actual fields here (e.g., email, name, etc.)
   resetToken ResetToken? @relation("UserResetToken")
 }
