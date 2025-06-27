@@ -1,41 +1,25 @@
-import { NextRequest,NextResponse } from "next/server";
-import jwt from 'jsonwebtoken'
+// verify-forgot-password-token/route.ts
+import { NextRequest, NextResponse } from "next/server";
+import jwt from "jsonwebtoken";
 
-export async function POST(request : NextRequest){
-    try{
-        const { token } = await request.json()
+export async function POST(request: NextRequest) {
+  try {
+    const { token } = await request.json();
 
-        if(!token){
-            return NextResponse.json({
-                error : "Token is required"
-            }, {
-                status : 400
-            })
-        }
-
-        const verifyToken:any = await jwt.verify(token,process.env.FORGOT_PASSWORD_SECRET_KEY!)
-
-        if(!verifyToken){
-            return NextResponse.json({
-                error : "Token is expired",
-                expired : true
-            }, {
-                status : 400
-            })
-        }
-
-        console.log("verifyToken",verifyToken)
-
-        return NextResponse.json({
-            message : "Token is valid",
-            userId : verifyToken ? verifyToken?.id : null,
-            expired : false
-        })
-
-    }catch(error){
-        return NextResponse.json(
-            { error : "Something went wrong"},
-            { status : 500 }
-        )
+    if (!token) {
+      return NextResponse.json({ error: "Token is required" }, { status: 400 });
     }
+
+    const decoded: any = jwt.verify(token, process.env.FORGOT_PASSWORD_SECRET_KEY!);
+    const userId = decoded?.id;
+
+    if (!userId) {
+      return NextResponse.json({ error: "Invalid token" }, { status: 400 });
+    }
+
+    return NextResponse.json({ message: "Valid token", userId }, { status: 200 });
+  } catch (error) {
+    console.error("Token verification error:", error);
+    return NextResponse.json({ error: "Invalid or expired token" }, { status: 401 });
+  }
 }
