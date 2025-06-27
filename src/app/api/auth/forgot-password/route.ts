@@ -5,6 +5,7 @@ import { sendEmail } from "@/config/resendemail";
 import { ForgotPasswordEmail } from "@/components/template/ForgotPasswordEmail";
 import { connectDB } from "@/config/connectDB";
 import { renderAsync } from "@react-email/render";
+import React from "react";
 
 export async function POST(request: NextRequest) {
   const host = request.headers.get("host");
@@ -35,7 +36,7 @@ export async function POST(request: NextRequest) {
     const resetUrl = `${DOMAIN}/reset-password?token=${token}`;
 
     const emailHtml = await renderAsync(
-      ForgotPasswordEmail({ name: existingUser.name, url: resetUrl })
+      <ForgotPasswordEmail name={existingUser.name} url={resetUrl} />
     );
 
     await sendEmail(
