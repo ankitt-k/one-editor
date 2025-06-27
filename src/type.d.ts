@@ -1,9 +1,11 @@
-import { Connection } from 'mongoose'
+// types/mongoose.d.ts
+import mongoose from 'mongoose';
+
 declare global {
-    var mongoose : {
-        conn : Connection | null, 
-        promise : Promise<Connection> | null
-    }
+  var mongoose: {
+    conn: typeof mongoose | null;
+    promise: Promise<typeof mongoose> | null;
+  };
 }
 
-export {}
+export {};
