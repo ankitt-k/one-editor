@@ -1,49 +1,42 @@
 // lib/authOptions.ts
-import { connectDB } from '@/config/connectDB';
-import UserModel from '@/models/User';
-import bcrypt from 'bcryptjs';
-import { NextAuthOptions } from 'next-auth';
-import CredentialsProvider from 'next-auth/providers/credentials';
+import { AuthOptions } from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
+import { connectDB } from "@/config/connectDB";
+import UserModel from "@/models/UserModel"; // Make sure this exists
+import bcrypt from "bcryptjs";
 
-export const authOptions: NextAuthOptions = {
+export const authOptions: AuthOptions = {
+  session: {
+    strategy: "jwt",
+  },
   providers: [
     CredentialsProvider({
-      name: 'Credentials',
+      name: "Credentials",
       credentials: {
-        email: { label: 'Email', type: 'text' },
-        password: { label: 'Password', type: 'password' },
+        email: { label: "Email", type: "email" },
+        password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        if (!credentials?.email || !credentials.password) {
-          throw new Error('Email and Password are required');
-        }
-
         await connectDB();
 
+        if (!credentials?.email || !credentials?.password) return null;
+
         const user = await UserModel.findOne({ email: credentials.email });
-        if (!user) {
-          throw new Error('No user found with this email');
-        }
 
-        const isValidPassword = await bcrypt.compare(
-          credentials.password,
-          user.password
-        );
+        if (!user) return null;
 
-        if (!isValidPassword) {
-          throw new Error('Invalid password');
-        }
+        const isValid = await bcrypt.compare(credentials.password, user.password);
+
+        if (!isValid) return null;
 
         return {
           id: user._id.toString(),
-          email: user.email,
           name: user.name,
-          image: user.picture || '',
+          email: user.email,
         };
       },
     }),
   ],
-
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
@@ -58,16 +51,8 @@ export const authOptions: NextAuthOptions = {
       return session;
     },
   },
-
   pages: {
-    signIn: '/login',
-    error: '/login',
+    signIn: "/login", // optional
   },
-
-  session: {
-    strategy: 'jwt',
-    maxAge: 30 * 24 * 60 * 60,
-  },
-
   secret: process.env.NEXTAUTH_SECRET,
 };
