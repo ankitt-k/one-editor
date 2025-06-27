@@ -5,7 +5,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/authOptions";
 import FileModel from "@/models/FileModel";
 
-import { hmltBoilerplateCode, scriptBoilrplateCode, styleBoilrplateCode } from "@/lib/sampleCode";
+import { hmltBoilerplateCode, scriptBoilrPlatCode, styleBoilrPlatCode } from "@/lib/sampleCode";
 
 // CREATE project
 export async function POST(request: NextRequest) {
@@ -30,9 +30,9 @@ export async function POST(request: NextRequest) {
 
         // Create default boilerplate files
         await FileModel.create([
-            { name: "index.html", projectId: project._id, content: htmlBoilerplateCode },
-            { name: "style.css", projectId: project._id, content: styleBoilerplateCode },
-            { name: "script.js", projectId: project._id, content: scriptBoilerplateCode },
+            { name: "index.html", projectId: project._id, content: hmltBoilerplateCode },
+            { name: "style.css", projectId: project._id, content: styleBoilrPlatCode },
+            { name: "script.js", projectId: project._id, content: scriptBoilrPlatCode },
         ]);
 
         return NextResponse.json(

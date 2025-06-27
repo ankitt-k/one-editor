@@ -39,7 +39,8 @@ export async function POST(req: NextRequest) {
   const resetUrl = `${process.env.NEXT_PUBLIC_APP_URL}/reset-password?token=${token}`;
 
   const emailHtml = await renderAsync(
-    <ForgotPasswordEmail name={existingUser.name} url={resetUrl} />
+  <ForgotPasswordEmail name={existingUser.name ?? 'there'} url={resetUrl} />
+
   );
 
   await sendEmail(

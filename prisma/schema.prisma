@@ -1,0 +1,28 @@
+datasource db {
+  provider = "mongodb" // or "postgresql", "mysql"
+  url      = env("DATABASE_URI")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  email String @unique
+  name  String // ✅ Remove `?` to make non-null
+  // ...
+}
+
+
+
+model ResetToken {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  user       User     @relation(fields: [userId], references: [id])
+  userId     String   @unique @db.ObjectId   // ✅ Make userId unique
+  token      String   @unique
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+}
+
+
