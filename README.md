@@ -6,8 +6,7 @@
 ![Alt text](/demo/3.png?raw=true "demo3")
 ![Alt text](/demo/4.png?raw=true "demo4")
 ![Alt text](/demo/5.png?raw=true "demo5")
-![Alt text](/demo/6.png?raw=true "demo6")
-![Alt text](/demo/7.png?raw=true "demo7")
+
 ![Alt text](/demo/8.png?raw=true "demo8")
 
 
