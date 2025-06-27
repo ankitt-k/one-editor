@@ -1,7 +1,7 @@
 // src/app/api/auth/forgot-password/route.ts
 import { NextRequest, NextResponse } from "next/server";
 import { renderAsync } from "@react-email/render";
-import ForgotPasswordEmail from '@/components/template/ForgotPasswordEmail';
+import {ForgotPasswordEmail} from '@/components/template/ForgotPasswordEmail';
  // Adjust path
 import { sendEmail } from "@/lib/mail"; // Adjust path
 import { db } from "@/lib/db"; // Your DB instance
