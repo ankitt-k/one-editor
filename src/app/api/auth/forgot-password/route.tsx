@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Email is required" }, { status: 400 });
   }
 
-  const existingUser = await db.user.findUnique({
+  const existingUser = await db.user.findFirst({
     where: { email },
   });
 
