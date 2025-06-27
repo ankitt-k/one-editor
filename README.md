@@ -41,7 +41,7 @@ real-time file handling, and project saving.
 ![Alt text](/demo/4.png?raw=true "demo4")
 ![Alt text](/demo/5.png?raw=true "demo5")
 
-![Alt text](/demo/8.png?raw=true "demo8")
+
 
 
 
