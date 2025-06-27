@@ -18,15 +18,7 @@ real-time file handling, and project saving.
 
 ---
 
-## 🖼 Demo Screenshots
 
-| Editor View | Dashboard |
-|-------------|-----------|
-| ![Editor Screenshot](demo/1.png) | ![Dashboard Screenshot](demo/2.png) |
-
-
-
----
 
 ## 🛠️ Tech Stack
 
