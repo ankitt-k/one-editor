@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -12,7 +11,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import Axios from "@/lib/Axios";
-import { useRouter } from "next/navigation";
 import { Pencil } from "lucide-react";
 
 type TUpdateProject = {

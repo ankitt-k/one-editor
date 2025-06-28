@@ -1,8 +1,9 @@
 import { NextResponse, NextRequest } from "next/server";
 import { connectDB } from "@/config/connectDB";
 import FileModel from "@/models/FileModel";
-import { getServerSession } from "next-auth";
+import { getServerSession } from "next-auth/next"; // ✅ FIXED
 import { authOptions } from "@/lib/authOptions";
+
 
 export async function POST(request : NextRequest){
     try {

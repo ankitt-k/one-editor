@@ -17,9 +17,9 @@ import {
 } from "@/components/ui/sidebar";
 import Axios from "@/lib/Axios";
 import { getFileIcon } from "@/lib/getFileIcon";
-import { File, FilePlus } from "lucide-react";
+import { FilePlus } from "lucide-react";
 import Image from "next/image";
-import { useParams, useRouter, useSearchParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { toast } from "sonner";
 

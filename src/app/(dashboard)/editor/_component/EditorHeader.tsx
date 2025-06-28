@@ -1,15 +1,11 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import UserAvatar from "@/components/UserAvatar";
 import Axios from "@/lib/Axios";
 import {
   AppWindow,
   ArrowLeft,
   Database,
-  Pencil,
-  Play,
-  PlayCircle,
 } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";

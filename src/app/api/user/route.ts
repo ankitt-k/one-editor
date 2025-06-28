@@ -1,6 +1,6 @@
-import { NextResponse,NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 import { connectDB } from "@/config/connectDB";
-import { getServerSession } from "next-auth";
+import { getServerSession } from "next-auth/next";
 import UserModel from "@/models/UserModel";
 import { authOptions } from "@/lib/authOptions";
 

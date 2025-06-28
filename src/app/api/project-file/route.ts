@@ -1,6 +1,6 @@
 import { NextRequest,NextResponse } from "next/server";
 import { connectDB } from "@/config/connectDB";
-import { getServerSession } from "next-auth";
+import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/lib/authOptions";
 import FileModel from "@/models/FileModel";
 

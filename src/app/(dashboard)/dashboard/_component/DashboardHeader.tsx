@@ -1,13 +1,9 @@
 'use client'
 import Logo from '@/components/Logo'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Button } from '@/components/ui/button'
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
-import { SidebarTrigger, SidebarTriggerDashboard } from '@/components/ui/sidebar'
+import { SidebarTriggerDashboard } from '@/components/ui/sidebar'
 import UserAvatar from '@/components/UserAvatar'
-import { getAvatarName } from '@/lib/getAvatarName'
-import { signOut, useSession } from 'next-auth/react'
-import React, { useEffect } from 'react'
+import { useSession } from 'next-auth/react'
+import React from 'react'
 
 const DashboardHeader = () => {
   const session = useSession()

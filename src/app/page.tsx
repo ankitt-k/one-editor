@@ -4,7 +4,6 @@ import TextAnimationHeading from "@/components/TextAnimationHeading";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { TypeAnimation } from "react-type-animation";
 // // pages/_app.tsx or _app.js
 // import '../styles/globals.css'
 

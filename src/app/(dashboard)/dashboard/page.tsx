@@ -1,7 +1,5 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import { signOut } from 'next-auth/react'
-import { Button } from '@/components/ui/button'
 import Axios from '@/lib/Axios'
 import { toast } from 'sonner'
 import Image from 'next/image'
